@@ -1,4 +1,3 @@
-# import pdfkit
 import yaml
 from datetime import datetime
 
@@ -44,6 +43,8 @@ with open('output.html','w') as file:
 
 # pdfkit export
 
+# import pdfkit
+
 # options = {
 #     'page-size': 'A4',
 #     # 'dpi': 100,
@@ -58,5 +59,5 @@ with open('output.html','w') as file:
 #     ],
 #     # 'no-outline': None
 # }
-
-# pdfkit.from_string(html,'html2pdf.pdf', options=options)
+#
+# pdfkit.from_string(html,'output.pdf', options=options)

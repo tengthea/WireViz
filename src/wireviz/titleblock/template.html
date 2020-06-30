@@ -5,20 +5,18 @@
       font-family: Arial;
     }
 
-    table, td {
-        border: 1px solid black;
-    }
-
     table {
+      border: 0.35mm solid black; /* line weight based on DIN 15 */
       padding: 0;
       border-bottom: 0;
-      border-left: 0;
-      border-spacing: 0px;
+      border-right: 0;
+      border-spacing: 0mm;
     }
 
     td {
+      border: 0.25mm solid black; /* line weight based on DIN 15 */
       border-top: 0;
-      border-right: 0;
+      border-left: 0;
 
       overflow: hidden;
       /* display: inline-block; */
@@ -36,24 +34,24 @@
 
     #frame {
       position: relative;
-      border: 1px solid black
+      border: 0.35mm solid black
     }
 
-    /* TODO: reduce frame size by a margin */
-    
+    /* Canvas size based on DIN 823 / DIN 6771 / EN ISO 5457 */
+
     .A4, .sheetsize_default { /* portrait */
-      width: 210mm;
-      height: 297mm;
+      width: 180mm;
+      height: 277mm;
     }
 
     .A3 { /* landscape */
-      width: 420mm;
-      height: 297mm;
+      width: 390mm;
+      height: 277mm;
     }
 
     .A2 { /* landscape */
-      width: 594mm;
-      height: 420mm;
+      width: 564mm;
+      height: 400mm;
     }
 
     #titleblock {
@@ -107,15 +105,15 @@
     }
 
     .company {
-      font-size:4mm;
-      text-align:center;
-      white-space:normal;
+      font-size: 4mm;
+      text-align: center;
+      white-space: normal;
     }
 
     .partno {
-      font-size:4mm;
-      text-align:center;
-      white-space:normal;
+      font-size: 4mm;
+      text-align: center;
+      white-space: normal;
     }
 
     .sheetno {
