@@ -30,13 +30,30 @@
       position: relative;
       top: 50%;
       transform: translateY(-50%);
+      max-height: 100%;
+      max-width: 100%;
     }
 
     #frame {
       position: relative;
-      height: 297mm;
-      width: 210mm;
       border: 1px solid black
+    }
+
+    /* TODO: reduce frame size by a margin */
+    
+    .A4, .sheetsize_default { /* portrait */
+      width: 210mm;
+      height: 297mm;
+    }
+
+    .A3 { /* landscape */
+      width: 420mm;
+      height: 297mm;
+    }
+
+    .A2 { /* landscape */
+      width: 594mm;
+      height: 420mm;
     }
 
     #titleblock {
@@ -50,7 +67,13 @@
     }
 
     #diagram {
-      height: 250mm;
+      position: relative;
+      top: 0;
+      left: 0;
+      max-width: 100%;
+      height: calc(100% - 9 * 4.25mm);
+      /* TODO: auto-adapt to height of title block + BOM table;
+               BOM table might be above (A4) or to the left (A3 and larger) of the title block */
       text-align: center;
       vertical-align: middle;
     }
@@ -103,10 +126,10 @@
   </style>
 </head>
 <body>
-  <div id="frame">
+  <div id="frame" class="sheetsize_default">
 
     <div id="diagram">
-      <img src="harness.svg" style="width: 95%"/>
+      <img src="harness.svg" />
     </div>
 
     <div id="titleblock">

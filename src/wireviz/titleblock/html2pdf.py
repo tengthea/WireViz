@@ -37,6 +37,7 @@ for i, (k, v) in enumerate(yaml_data['metadata']['revisions'].items(), 1):
     html = html.replace(f'<!-- rev_{i}_name -->', name)
     html = html.replace(f'<!-- rev_{i}_date -->', date)
 
+html = html.replace(f'"sheetsize_default"', '"{}"'.format(yaml_data['metadata']['format']['sheetsize'])) # include quotes so no replacement happens within <style> definition
 
 with open('output.html','w') as file:
     file.write(html)

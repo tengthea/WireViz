@@ -20,3 +20,6 @@ metadata:
       changelog: See ECO-2020-001
       name: formatc1702
       date: 2020-06-30
+
+  format:
+    sheetsize: A3
