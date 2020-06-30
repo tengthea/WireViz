@@ -1,0 +1,148 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    table {
+      padding: 0;
+      border-spacing: 0px;
+    }
+
+    td {
+      overflow: hidden;
+      /* display: inline-block; */
+      white-space: nowrap;
+      font-size: 2.8mm;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+    table {
+        border-bottom: 0;
+        border-left: 0;
+    }
+    td, th {
+        border-top: 0;
+        border-right: 0;
+    }
+
+    #frame {
+      position: relative;
+      height: 297mm;
+      width: 210mm;
+      border: 1px solid black
+    }
+
+    #titleblock {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    #diagram {
+      height: 250mm;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    img{
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+  </style>
+</head>
+<body>
+  <div id="frame">
+
+    <div id="diagram">
+      <img src="harness.svg" style="width: 95%"/>
+    </div>
+
+    <div id="titleblock">
+      <table style="width:180mm; height:38.25mm">
+        <tr style="height:4.25mm">
+          <td style="width:6mm; text-align:center"><!-- rev_8_number --></td>
+          <td style="width:22mm"><!-- rev_8_changelog --></td>
+          <td style="width:16mm"><!-- rev_8_name --></td>
+          <td style="width:10mm"><!-- rev_8_date --></td>
+          <td style="width:18mm">Created</td>
+          <td style="width:16mm">formatc1702</td>
+          <td style="width:10mm">2020-06-01</td>
+          <td style="width:82mm; font-size:5.6mm; text-align:center; white-space:normal" colspan="3" rowspan="5">Power Supply Main Harness</td>
+        </tr>
+        <tr style="height:4.25mm">
+          <td style="text-align:center"><!-- rev_7_number --></td>
+          <td><!-- rev_7_changelog --></td>
+          <td><!-- rev_7_name --></td>
+          <td><!-- rev_7_date --></td>
+          <td>Approved</td>
+          <td>formatc1702</td>
+          <td>2020-06-02</td>
+        </tr>
+        <tr style="height:4.25mm">
+          <td style="text-align:center"><!-- rev_6_number --></td>
+          <td><!-- rev_6_changelog --></td>
+          <td><!-- rev_6_name --></td>
+          <td><!-- rev_6_date --></td>
+          <td><!-- process_3_title --></td>
+          <td><!-- process_3_name --></td>
+          <td><!-- process_3_date --></td>
+        </tr>
+        <tr style="height:4.25mm">
+          <td style="text-align:center"><!-- rev_5_number --></td>
+          <td><!-- rev_5_changelog --></td>
+          <td><!-- rev_5_name --></td>
+          <td><!-- rev_5_date --></td>
+          <td><!-- process_4_title --></td>
+          <td><!-- process_4_name --></td>
+          <td><!-- process_4_date --></td>
+        </tr>
+        <tr style="height:4.25mm">
+          <td style="text-align:center"><!-- rev_4_number --></td>
+          <td><!-- rev_4_changelog --></td>
+          <td><!-- rev_4_name --></td>
+          <td><!-- rev_4_date --></td>
+          <td colspan="2"></td>
+          <td></td>
+        </tr>
+        <tr style="height:4.25mm">
+          <td style="text-align:center"><!-- rev_3_number --></td>
+          <td><!-- rev_3_changelog --></td>
+          <td><!-- rev_3_name --></td>
+          <td><!-- rev_3_date --></td>
+          <td style="font-size:4mm; text-align:center; white-space:normal" colspan="3" rowspan="3">Daniel Rojas Engineering</td>
+          <td style="font-size:4mm; text-align:center; white-space:normal" colspan="2" rowspan="3">123-456-789</td>
+          <td style="width:12.75mm; text-align:center" rowspan="2">Sheet<br />1</td>
+        </tr>
+        <tr style="height:4.25mm">
+          <td style="text-align:center">02</td>
+          <td>See ECO-2020-001</td>
+          <td>formatc1702</td>
+          <td>2020-06-30</td>
+        </tr>
+        <tr style="height:4.25mm">
+          <td style="text-align:center">01</td>
+          <td>Fix wire gauge</td>
+          <td>formatc1702</td>
+          <td>2020-06-29</td>
+          <td style="text-align:center">of 1</td>
+        </tr>
+        <tr style="height:4.25mm">
+          <td>Rev</td>
+          <td>Changelog</td>
+          <td>Name</td>
+          <td>Date</td>
+          <td colspan="3"></td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
