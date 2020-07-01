@@ -69,8 +69,24 @@
       right: 0;
     }
 
-    #titleblock tr {
+    #titleblock tr, #bom tr {
       height: 4.25mm;
+    }
+
+    .A4 #bom { /* BOM on top of title block */
+      position: absolute;
+      bottom: 38.25mm;
+      right: 0;
+    }
+
+    .A3 #bom, .A2 #bom { /* BOM to the left of title block */
+      position: absolute;
+      bottom: 0mm;
+      left: 0mm;
+    }
+
+    #bom table {
+      width:180mm
     }
 
     #diagram {
@@ -152,6 +168,10 @@
 
       <div id="diagram">
         <!-- diagram -->
+      </div>
+
+      <div id="bom">
+        <!-- bom -->
       </div>
 
       <div id="titleblock">

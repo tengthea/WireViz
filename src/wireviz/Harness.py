@@ -240,6 +240,36 @@ class Harness:
         # import os
         # html = html.replace('<!-- diagram -->', '<img src="{filename}.png" />'.format(filename=os.path.basename(filename)))
 
+        # generate BOM table
+        bom_list_flat = flatten2d(bom_list)
+        bom_list_flat.reverse()
+
+        bom_html = ''
+        bom_html = f'{bom_html}<table>'
+
+        # uncomment block for BOM header on top
+        # bom_html = f'{bom_html}<tr>'
+        # for item in bom_list_flat[0]:
+        #     bom_html = f'{bom_html}<td align="left">{item}</td>'
+        # bom_html = f'{bom_html}</tr>'
+
+        # for row in bom_list_flat[1:]: # non-reversed BOM
+        for row in bom_list_flat[0:-1]: # reversed BOM
+            bom_html = f'{bom_html}<tr>'
+            for i, item in enumerate(row):
+                align = 'align="right"' if bom_list_flat[0][i] == 'Qty' else ''
+                bom_html = f'{bom_html}<td {align}>{item}</td>'
+            bom_html = f'{bom_html}</tr>'
+        bom_html = f'{bom_html}<tr>'
+
+        # uncomment block for BOM header on bottom
+        for item in bom_list_flat[-1]: # reversed BOM
+            bom_html = f'{bom_html}<td align="left">{item}</td>'
+        bom_html = f'{bom_html}</tr>'
+        bom_html = f'{bom_html}</table>'
+        # bom_html = f'{bom_html}'
+        html = html.replace('<!-- bom -->', bom_html)
+
         # fill out title block
         if self.metadata:
             html = html.replace('<!-- part_title -->', self.metadata.get('title', ''))
