@@ -65,8 +65,13 @@
 
     #titleblock {
       position: absolute;
-      bottom: 0;
-      right: 0;
+      bottom: 0mm;
+      right: -0mm;
+    }
+
+    #titleblock table {
+      width: 180mm;
+      height: 38.25mm;
     }
 
     #titleblock tr, #bom tr {
@@ -94,7 +99,7 @@
       top: 0;
       left: 0;
       max-width: 100%;
-      height: calc(100% - 9 * 4.25mm);
+      height: calc(100% - 13 * 4.25mm);
       /* TODO: auto-adapt to height of title block + BOM table;
                BOM table might be above (A4) or to the left (A3 and larger) of the title block */
       text-align: center;
@@ -150,7 +155,7 @@
   <style type="text/css" media="print">
 
     @page {
-      size: auto;   /* auto is the initial value */
+      size: auto;
       margin: 0;
     }
 
@@ -175,7 +180,7 @@
       </div>
 
       <div id="titleblock">
-        <table style="width:180mm; height:38.25mm">
+        <table>
           <tr>
             <td class="revno"><!-- rev_8_number --></td>
             <td class="changelog"><!-- rev_8_changelog --></td>
@@ -253,8 +258,9 @@
             <td colspan="2"></td>
           </tr>
         </table>
-      </div>
-    </div>
-  </div>
+      </div> <!-- /titleblock -->
+
+    </div> <!-- /frame -->
+  </div> <!-- /page -->
 </body>
 </html>
