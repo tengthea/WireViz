@@ -234,16 +234,16 @@ class Harness:
         # embed SVG diagram
         with open(f'{filename}.svg') as file:
             svgdata = file.read()
-        html = html.replace('<!-- diagram -->',svgdata)
+        html = html.replace('<!-- diagram -->', svgdata)
 
         # Alternative: embed <img> tag with link to SVG/PNG
         # import os
         # html = html.replace('<!-- diagram -->', '<img src="{filename}.png" />'.format(filename=os.path.basename(filename)))
 
         # fill out title block
-        html = html.replace('<!-- part_title -->', self.metadata['title'])
-        html = html.replace('<!-- part_number -->', self.metadata['partno'])
-        html = html.replace('<!-- company -->', self.metadata['company'])
+        html = html.replace('<!-- part_title -->', self.metadata.get('title', ''))
+        html = html.replace('<!-- part_number -->', self.metadata.get('partno', ''))
+        html = html.replace('<!-- company -->', self.metadata.get('company', ''))
 
         # TODO: handle multi-page documents
         html = html.replace('<!-- sheet_current -->', 'Sheet<br />1')
