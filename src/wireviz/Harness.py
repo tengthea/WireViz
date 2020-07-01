@@ -249,7 +249,7 @@ class Harness:
         html = html.replace('<!-- sheet_current -->', 'Sheet<br />1')
         html = html.replace('<!-- sheet_total -->', 'of 1')
 
-        for i, (k, v) in enumerate(self.metadata['authors'].items(), 1):
+        for i, (k, v) in enumerate(self.metadata.get('authors', {}).items(), 1):
             title = k
             name = v['name']
             date = v['date'].strftime('%Y-%m-%d')
@@ -257,7 +257,7 @@ class Harness:
             html = html.replace(f'<!-- process_{i}_name -->', name)
             html = html.replace(f'<!-- process_{i}_date -->', date)
 
-        for i, (k, v) in enumerate(self.metadata['revisions'].items(), 1):
+        for i, (k, v) in enumerate(self.metadata.get('revisions', {}).items(), 1):
             # TODO: for more than 8 revisions, keep only the 8 most recent ones
             number = k
             changelog = v['changelog']
