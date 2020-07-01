@@ -75,6 +75,9 @@ def parse(yaml_input, file_out=None, generate_bom=False):
             elif ty == list:
                 yaml_data[sec] = []
 
+    if 'metadata' in yaml_data:
+        harness.metadata = yaml_data['metadata']
+
     # add connections
     ferrule_counter = 0
     for connections in yaml_data['connections']:
