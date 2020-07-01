@@ -68,3 +68,25 @@ connections:
   -
     - W4: [1,2]
     - X4: [1,2]
+
+metadata:
+  title: WireViz Demo 02
+  partno: 123-456-789
+  # company: ACME Corp.
+
+  authors:
+    Created:
+      name:  D. Rojas
+      date:  2020-05-20
+    Approved:
+      name:  D. Rojas
+      date:  2020-05-20
+
+  revisions:
+    01:
+      changelog: Add ferrules
+      name: D. Rojas
+      date: 2020-06-14
+
+  format:
+    sheetsize: A3

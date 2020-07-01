@@ -24,3 +24,19 @@ connections:
   -
     - X1: 5
     - W1: s
+
+metadata:
+  title: WireViz Demo 01
+  partno: 123-456-789
+  # company: ACME Corp.
+
+  authors:
+    Created:
+      name:  D. Rojas
+      date:  2020-05-20
+    Approved:
+      name:  D. Rojas
+      date:  2020-05-20
+
+  format:
+    sheetsize: A4
