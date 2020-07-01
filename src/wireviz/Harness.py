@@ -241,34 +241,35 @@ class Harness:
         # html = html.replace('<!-- diagram -->', '<img src="{filename}.png" />'.format(filename=os.path.basename(filename)))
 
         # fill out title block
-        html = html.replace('<!-- part_title -->', self.metadata.get('title', ''))
-        html = html.replace('<!-- part_number -->', self.metadata.get('partno', ''))
-        html = html.replace('<!-- company -->', self.metadata.get('company', ''))
+        if self.metadata:
+            html = html.replace('<!-- part_title -->', self.metadata.get('title', ''))
+            html = html.replace('<!-- part_number -->', self.metadata.get('partno', ''))
+            html = html.replace('<!-- company -->', self.metadata.get('company', ''))
 
-        # TODO: handle multi-page documents
-        html = html.replace('<!-- sheet_current -->', 'Sheet<br />1')
-        html = html.replace('<!-- sheet_total -->', 'of 1')
+            # TODO: handle multi-page documents
+            html = html.replace('<!-- sheet_current -->', 'Sheet<br />1')
+            html = html.replace('<!-- sheet_total -->', 'of 1')
 
-        for i, (k, v) in enumerate(self.metadata.get('authors', {}).items(), 1):
-            title = k
-            name = v['name']
-            date = v['date'].strftime('%Y-%m-%d')
-            html = html.replace(f'<!-- process_{i}_title -->', title)
-            html = html.replace(f'<!-- process_{i}_name -->', name)
-            html = html.replace(f'<!-- process_{i}_date -->', date)
+            for i, (k, v) in enumerate(self.metadata.get('authors', {}).items(), 1):
+                title = k
+                name = v['name']
+                date = v['date'].strftime('%Y-%m-%d')
+                html = html.replace(f'<!-- process_{i}_title -->', title)
+                html = html.replace(f'<!-- process_{i}_name -->', name)
+                html = html.replace(f'<!-- process_{i}_date -->', date)
 
-        for i, (k, v) in enumerate(self.metadata.get('revisions', {}).items(), 1):
-            # TODO: for more than 8 revisions, keep only the 8 most recent ones
-            number = k
-            changelog = v['changelog']
-            name = v['name']
-            date = v['date'].strftime('%Y-%m-%d')
-            html = html.replace(f'<!-- rev_{i}_number -->', '{:02d}'.format(number))
-            html = html.replace(f'<!-- rev_{i}_changelog -->', changelog)
-            html = html.replace(f'<!-- rev_{i}_name -->', name)
-            html = html.replace(f'<!-- rev_{i}_date -->', date)
+            for i, (k, v) in enumerate(self.metadata.get('revisions', {}).items(), 1):
+                # TODO: for more than 8 revisions, keep only the 8 most recent ones
+                number = k
+                changelog = v['changelog']
+                name = v['name']
+                date = v['date'].strftime('%Y-%m-%d')
+                html = html.replace(f'<!-- rev_{i}_number -->', '{:02d}'.format(number))
+                html = html.replace(f'<!-- rev_{i}_changelog -->', changelog)
+                html = html.replace(f'<!-- rev_{i}_name -->', name)
+                html = html.replace(f'<!-- rev_{i}_date -->', date)
 
-        html = html.replace(f'"sheetsize_default"', '"{}"'.format(self.metadata['format']['sheetsize'])) # include quotes so no replacement happens within <style> definition
+            html = html.replace(f'"sheetsize_default"', '"{}"'.format(self.metadata['format']['sheetsize'])) # include quotes so no replacement happens within <style> definition
 
         with open(f'{filename}.html','w') as file:
             file.write(html)
