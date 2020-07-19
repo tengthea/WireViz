@@ -13,6 +13,7 @@ class Connector:
     manufacturer: Optional[str] = None
     manufacturer_part_number: Optional[str] = None
     internal_part_number: Optional[str] = None
+    style: Optional[str] = None
     category: Optional[str] = None
     type: Optional[str] = None
     subtype: Optional[str] = None
@@ -21,8 +22,8 @@ class Connector:
     pinout: List[Any] = field(default_factory=list)
     pinnumbers: List[Any] = field(default_factory=list)
     color: Optional[str] = None
-    show_name: bool = True
-    show_pincount: bool = True
+    show_name: bool = None
+    show_pincount: bool = None
     hide_disconnected_pins: bool = False
     autogenerate: bool = False
     loops: List[Any] = field(default_factory=list)
@@ -32,13 +33,16 @@ class Connector:
         self.ports_right = False
         self.visible_pins = {}
 
+        if self.style == 'simple':
+            if self.pincount and self.pincount > 1:
+                raise Exception('Connectors with style set to simple may only have one pin')
+            self.pincount = 1
+
         if self.pincount is None:
             if self.pinout:
                 self.pincount = len(self.pinout)
             elif self.pinnumbers:
                 self.pincount = len(self.pinnumbers)
-            elif self.category == 'ferrule':
-                self.pincount = 1
             else:
                 raise Exception('You need to specify at least one, pincount, pinout or pinnumbers')
 
@@ -54,6 +58,18 @@ class Connector:
 
         if len(self.pinnumbers) != len(set(self.pinnumbers)):
             raise Exception('Pin numbers are not unique')
+
+        if self.show_name is None:
+            if self.autogenerate:
+                self.show_name = False  # hide auto-generated designators by default
+            else:
+                self.show_name = True
+
+        if self.show_pincount is None:
+            if self.style == 'simple':
+                self.show_pincount = False  # hide pincount for simple connectors, since they are 1 pin connectors by definition
+            else:
+                self.show_pincount = True
 
         for loop in self.loops:
             # TODO: check that pins to connect actually exist
