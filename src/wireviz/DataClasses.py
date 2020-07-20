@@ -60,16 +60,10 @@ class Connector:
             raise Exception('Pins are not unique')
 
         if self.show_name is None:
-            if self.autogenerate:
-                self.show_name = False  # hide auto-generated designators by default
-            else:
-                self.show_name = True
+            self.show_name = not self.autogenerate # hide auto-generated designators by default
 
         if self.show_pincount is None:
-            if self.style == 'simple':
-                self.show_pincount = False  # hide pincount for simple connectors, since they are 1 pin connectors by definition
-            else:
-                self.show_pincount = True
+            self.show_pincount = self.style != 'simple' # hide pincount for simple (1 pin) connectors by default
 
         for loop in self.loops:
             # TODO: check that pins to connect actually exist
